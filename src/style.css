@@ -2,12 +2,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #b39678;
     color: #333333;
 }
 
 .header {
-    background-color: #f5f5f5;
+    background-color: #312f2d;
     color: #333333;
     padding: 10px;
     display: flex;
@@ -37,7 +37,8 @@ body {
 .header .logo span {
     font-size: 24px;
     font-weight: bold;
-    color: #333333;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #b39678;
 }
 
 .header .menu {
@@ -48,15 +49,16 @@ body {
 
 .header .menu a {
     font-size: 16px;
-    color: #333333;
+    color: #b39678;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .header .menu a:hover {
-    background-color: #e0e0e0;
+    background-color: #fdfdfd;
 }
 
 .header .menu .dropdown {
@@ -75,13 +77,13 @@ body {
     position: absolute;
     right: 0;
     top: 100%;
-    background-color: #ffffff;
+    background-color:#b39678;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(240, 236, 236, 0);
     z-index: 1;
     border-radius: 5px;
     overflow: hidden;
-    border: 1px solid #cccccc;
+    border: 1px solid #b39678;
 }
 
 .header .menu .dropdown-content a {
@@ -93,7 +95,7 @@ body {
 }
 
 .header .menu .dropdown-content a:hover {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
 }
 
 .header .menu .dropdown-content.show {
@@ -105,7 +107,7 @@ body {
     margin-top: 20px;
     font-size: 32px;
     font-weight: bold;
-    color: #666666;
+    color: #000000;
 }
 
 .main-options {
@@ -118,17 +120,17 @@ body {
 .main-options a {
     font-size: 18px;
     font-weight: bold;
-    color: #0066cc;
+    color: #000000;
     text-decoration: none;
     background-color: transparent;
     padding: 10px 20px;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    border: 2px solid #0066cc;
+    border: 2px solid#b396787c;
 }
 
 .main-options a:hover {
-    background-color: #e0e0e0;
+    background-color: #b396787c;
     color: #333333;
 }
 
@@ -141,8 +143,8 @@ body {
 .search-section input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #cccccc;
+    border-radius: 10px;
+    border: 2px solid #b39678;
     margin-right: 10px;
 }
 
@@ -155,21 +157,21 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #0066cc;
-    color: #fff;
+    background-color: #b39678;
+    color: #000000;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .search-section button:hover {
-    background-color: #0056b3;
+    background-color: #b39678b9;
 }
 
 .featured-properties {
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #b39678c4;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -188,10 +190,10 @@ body {
 
 .property {
     flex: 1 1 calc(33.333% - 20px);
-    background-color: #f9f9f9;
+    background-color: #1b19197a;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     text-align: center;
 }
 
@@ -207,12 +209,12 @@ body {
 
 .property-details h3 {
     margin: 0 0 10px 0;
-    color: #333333;
+    color: #000000;
 }
 
 .property-details p {
     margin: 5px 0;
-    color: #666666;
+    color: #080808;
 }
 
 .view-more-container {
@@ -223,15 +225,17 @@ body {
 .view-more-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #ffffff;
+    background-color: #806b55;
+    color: #000000;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .view-more-button:hover {
-    background-color: #0056b3;
+    background-color:#b3967898;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -239,18 +243,18 @@ body {
     cursor: pointer;
     width: 24px;
     height: 24px;
-    fill: #0066cc;
+    fill: #b39678;
 }
 
 .finance-link {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #0066cc;
+    color: #b39678;
     font-size: 16px;
 }
 
 .bi-currency-dollar {
     margin-right: 5px;
-    fill: #0066cc;
+    fill: #b39678;
 }
