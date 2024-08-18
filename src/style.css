@@ -1,0 +1,256 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.header {
+    background-color: #f5f5f5;
+    color: #333333;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #cccccc;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333333;
+    text-decoration: none;
+}
+
+.header .logo img {
+    height: 40px;
+}   
+
+.header .logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.header .menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header .menu a {
+    font-size: 16px;
+    color: #333333;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.header .menu a:hover {
+    background-color: #e0e0e0;
+}
+
+.header .menu .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.header .menu .dropdown .menu-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.header .menu .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #cccccc;
+}
+
+.header .menu .dropdown-content a {
+    color: #333333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.header .menu .dropdown-content a:hover {
+    background-color: #f5f5f5;
+}
+
+.header .menu .dropdown-content.show {
+    display: block;
+}
+
+.slogan {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #666666;
+}
+
+.main-options {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Reduzido para aproximar do slogan */
+    gap: 20px;
+}
+
+.main-options a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0066cc;
+    text-decoration: none;
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid #0066cc;
+}
+
+.main-options a:hover {
+    background-color: #e0e0e0;
+    color: #333333;
+}
+
+.search-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.search-section select,
+.search-section input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    margin-right: 10px;
+}
+
+.search-section input[type="text"] {
+    width: 600px;
+}
+
+.search-section button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0066cc;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-section button:hover {
+    background-color: #0056b3;
+}
+
+.featured-properties {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.featured-properties h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333333;
+}
+
+.property-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.property {
+    flex: 1 1 calc(33.333% - 20px);
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.property img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.property-details {
+    text-align: left;
+}
+
+.property-details h3 {
+    margin: 0 0 10px 0;
+    color: #333333;
+}
+
+.property-details p {
+    margin: 5px 0;
+    color: #666666;
+}
+
+.view-more-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.view-more-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.view-more-button:hover {
+    background-color: #0056b3;
+}
+
+
+.menu-icon {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    fill: #0066cc;
+}
+
+.finance-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 16px;
+}
+
+.bi-currency-dollar {
+    margin-right: 5px;
+    fill: #0066cc;
+}
