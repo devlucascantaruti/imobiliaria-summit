@@ -80,7 +80,7 @@ body {
     background-color:#b39678;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(240, 236, 236, 0);
-    z-index: 1;
+    z-index: 1050;
     border-radius: 5px;
     overflow: hidden;
     border: 1px solid #b39678;
@@ -113,7 +113,7 @@ body {
 .main-options {
     display: flex;
     justify-content: center;
-    margin-top: 20px; /* Reduzido para aproximar do slogan */
+    margin-top: 20px;
     gap: 20px;
 }
 
@@ -257,4 +257,14 @@ body {
 .bi-currency-dollar {
     margin-right: 5px;
     fill: #b39678;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.carousel-inner .carousel-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
 }
