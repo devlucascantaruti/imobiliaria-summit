@@ -4,14 +4,16 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: white;
+    background-color: #b39678;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
 }
 
 h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 .required::after {
@@ -26,11 +28,8 @@ h2 {
     margin-top: 2rem;
 }
 
-.invalid-feedback {
-    display: none;
-    color: red;
-}
-
-input:invalid + .invalid-feedback {
-    display: block;
+#financiamentoForm button {
+    color: rgb(255, 255, 255);
+    background-color:#333333;
+    border: #333333;
 }
