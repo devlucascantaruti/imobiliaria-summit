@@ -25,7 +25,7 @@
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #007bff; /* Cor de fundo do botão */
+    background-color: #555; /* Cor de fundo do botão */
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -33,7 +33,7 @@
 }
 
 .contato-section button:hover {
-    background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
+    background-color: #555; /* Cor de fundo do botão ao passar o mouse */
 }
 
 .contato-section .endereco {
