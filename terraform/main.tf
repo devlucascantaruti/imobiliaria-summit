@@ -31,7 +31,7 @@ resource "kubernetes_deployment" "website" {
       spec {
         container {
           name  = "summit-container"
-          image = "myregistry.azurecr.io/summit:v1"
+          image = "ysoliveira/website-summit:${var.image_tag}"
           port {
             container_port = 80
           }
