@@ -72,4 +72,4 @@ jobs:
           project_id: "constant-falcon-433116-h1"
 
       - name: Deploy to Kubernetes cluster
-        run: kubectl apply -f ../../k8s/deploy.yaml -n website
+        run: kubectl apply -f ./k8s/deploy.yaml -n website
