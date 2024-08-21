@@ -1,58 +1,76 @@
-name: CI/CD Pipeline
+name: CI-CD
 
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
-  build-and-deploy:
+  CI:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      security-events: write
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Obtendo o código
+        uses: actions/checkout@v3
+      - name: Docker Login
+        uses: docker/login-action@v3.0.0
+        with:
+          username: ${{secrets.DOCKER_HUB_USERNAME}}
+          password: ${{secrets.DOCKER_HUB_PASSWORD}}
+      - name: Construção da imagem Docker worker
+        uses: docker/build-push-action@v5.0.0
+        with:
+          context: ./src
+          file: ./src/Dockerfile
+          push: false
+          tags: |
+            ysoliveira/website-summit:${{github.run_number}}
+            ysoliveira/website-summit:latest
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.16.1
+        with:
+          image-ref: ysoliveira/website-summit:${{github.run_number}}
+          format: "sarif"
+          output: "trivy-results.sarif"
+          exit-code: 0
+          severity: UNKNOWN,CRITICAL,HIGH,MEDIUM,LOW
 
-    - name: Build Docker image
-      id: build
-      run: |
-        docker build -t ysoliveira/website-summit:${{ github.sha }} .
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: "trivy-results.sarif"
 
-    - name: Push Docker image to registry
-      run: |
-        echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
-        docker push ysoliveira/website-summit:${{ github.sha }}
+      - name: Enviando a imagem
+        run: |
+          docker push ysoliveira/website-summit:${{github.run_number}}
+          docker push ysoliveira/website-summit:latest
+  CD:
+    runs-on: ubuntu-latest
+    needs: [CI]
 
-    - name: Update Kubernetes Deployment
-      run: |
-        kubectl set image deployment/summit-deployment summit-container=ysoliveira/website-summit:${{ github.sha }} -n my-namespace
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
+    steps:
+      - name: Obtendo o código
+        uses: actions/checkout@v3
 
-    - name: Set up Terraform
-      uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: 1.5.0
+      - name: Configurando autenticação na GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-    - name: Terraform Init
-      run: terraform init
+      - name: Configurando contexto para o cluster GKE
+        uses: google-github-actions/get-gke-credentials@v1
+        with:
+          cluster_name: "product-summit"
+          location: "us-central1"
+          project_id: "constant-falcon-433116-h1"
 
-    - name: Terraform Plan
-      id: plan
-      run: terraform plan -out=tfplan
-
-    - name: Terraform Plan Review
-      id: review
-      uses: reviewdog/action-terraform@v1
-      with:
-        terraform_directory: './'
-        plan_file: tfplan
-
-    - name: Terraform Apply
-      if: github.event_name == 'push' && github.actor == 'ysoliveira01'
-      run: terraform apply -var="image_tag=${{ github.sha }}" -auto-approve tfplan
-      env:
-        TF_VAR_some_variable: ${{ secrets.TF_VAR_SOME_VARIABLE }}
+      - name: Deploy to Kubernetes cluster
+        run: kubectl apply -f path/to/your/k8s/deployment.yaml
