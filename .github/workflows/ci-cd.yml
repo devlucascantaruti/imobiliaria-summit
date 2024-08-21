@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
+
 
 jobs:
   CI:
@@ -43,10 +42,10 @@ jobs:
           exit-code: 0
           severity: UNKNOWN,CRITICAL,HIGH,MEDIUM,LOW
 
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: "trivy-results.sarif"
+      # - name: Upload Trivy scan results to GitHub Security tab
+      #   uses: github/codeql-action/upload-sarif@v2
+      #   with:
+      #     sarif_file: "trivy-results.sarif"
 
       - name: Enviando a imagem
         run: |
