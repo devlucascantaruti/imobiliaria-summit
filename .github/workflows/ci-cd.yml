@@ -69,4 +69,3 @@ jobs:
       - name: Deploy to Kubernetes cluster
         run: |
           kubectl apply -f ./k8s/deployment.yaml -n website
-          kubectl set image -f ./k8s/deployment.yaml ysoliveira/website-summit=ysoliveira/website-summit:${{github.run_number}} -n website
