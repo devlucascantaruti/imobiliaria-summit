@@ -31,10 +31,13 @@ metadata:
   name: postgre
   namespace: website
 spec:
-  selector:
-    app: postgre
+  type: LoadBalancer
   ports:
     - port: 5432
+      targetPort: 5432
+  selector:
+    app: postgre
+    
 ---
 apiVersion: apps/v1
 kind: Deployment
