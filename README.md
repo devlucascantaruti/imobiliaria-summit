@@ -39,7 +39,7 @@ Atualmente, estamos desenvolvendo o site e criando um backend para conectar com 
 
 6. Por fim, faça o push da sua branch para o repositório remoto:
     ```bash
-    git push
+    git push --set-upstream origin feature/
     ```
 
 7. Crie uma Pull Request (PR) da sua branch para a branch principal (main) e aguarde a aprovação.
