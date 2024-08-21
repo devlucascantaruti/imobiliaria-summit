@@ -42,11 +42,6 @@ jobs:
           exit-code: 0
           severity: UNKNOWN,CRITICAL,HIGH,MEDIUM,LOW
 
-      # - name: Upload Trivy scan results to GitHub Security tab
-      #   uses: github/codeql-action/upload-sarif@v2
-      #   with:
-      #     sarif_file: "trivy-results.sarif"
-
       - name: Enviando a imagem
         run: |
           docker push ysoliveira/website-summit:${{github.run_number}}
@@ -73,5 +68,5 @@ jobs:
 
       - name: Deploy to Kubernetes cluster
         run: |
-          kubectl set image -f ./k8s/deployment.yaml ysoliveira/website-summit=ysoliveira/website-summit:${{github.run_number}}
-          kubectl apply -f ./k8s/deployment.yaml
+          kubectl apply -f ./k8s/deployment.yaml -n website
+          kubectl set image -f ./k8s/deployment.yaml ysoliveira/website-summit=ysoliveira/website-summit:${{github.run_number}} -n website
