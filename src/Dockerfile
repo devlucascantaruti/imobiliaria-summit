@@ -1,7 +1,11 @@
-FROM node:21.6.0-alpine3.18
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . . 
+FROM nginx:alpine
+
+RUN rm /etc/nginx/conf.d/default.conf
+
+COPY nginx.conf /etc/nginx/conf.d
+
+COPY . /usr/share/nginx/html
+
 EXPOSE 8080
-CMD ["node", "server.js"]
+
+CMD ["nginx", "-g", "daemon off;"]
