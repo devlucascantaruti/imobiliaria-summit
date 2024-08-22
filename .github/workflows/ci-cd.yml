@@ -26,6 +26,9 @@ jobs:
 
       - name: Build Docker image
         id: Build
+        with:
+          context: ./src
+          file: ./src/Dockerfile
         run: |
           BUILD_ID=${{ github.run_id }}
           IMAGE_TAG="ysoliveira/website-summit:${BUILD_ID}"
