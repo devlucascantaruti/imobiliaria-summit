@@ -41,14 +41,14 @@ jobs:
       #       ysoliveira/website-summit:${{ env.IMAGE_TAG }}
       #       ysoliveira/website-summit:latest
 
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.16.1
-        with:
-          image-ref: ysoliveira/website-summit:${{ env.IMAGE_TAG }}
-          format: "sarif"
-          output: "trivy-results.sarif"
-          exit-code: 0
-          severity: UNKNOWN,CRITICAL,HIGH,MEDIUM,LOW
+      # - name: Run Trivy vulnerability scanner
+      #   uses: aquasecurity/trivy-action@0.16.1
+      #   with:
+      #     image-ref: ysoliveira/website-summit:${{ env.IMAGE_TAG }}
+      #     format: "sarif"
+      #     output: "trivy-results.sarif"
+      #     exit-code: 0
+      #     severity: UNKNOWN,CRITICAL,HIGH,MEDIUM,LOW
 
       - name: Enviando a imagem
         run: |
