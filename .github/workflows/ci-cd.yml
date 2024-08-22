@@ -44,7 +44,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.16.1
         with:
-          image-ref: ysoliveira/website-summit:${{IMAGE_TAG}}
+          image-ref: ysoliveira/website-summit:${IMAGE_TAG}
           format: "sarif"
           output: "trivy-results.sarif"
           exit-code: 0
@@ -52,7 +52,7 @@ jobs:
 
       - name: Enviando a imagem
         run: |
-          docker push ysoliveira/website-summit:${{IMAGE_TAG}}
+          docker push ysoliveira/website-summit:${IMAGE_TAG}
           docker push ysoliveira/website-summit:latest
   CD:
     runs-on: ubuntu-latest
