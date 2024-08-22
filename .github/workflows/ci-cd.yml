@@ -23,20 +23,28 @@ jobs:
         with:
           username: ${{secrets.DOCKER_HUB_USERNAME}}
           password: ${{secrets.DOCKER_HUB_PASSWORD}}
-      - name: Construção da imagem Docker worker
-        uses: docker/build-push-action@v5.0.0
-        with:
-          context: ./src
-          file: ./src/Dockerfile
-          push: false
-          tags: |
-            ysoliveira/website-summit:${{github.run_number}}
-            ysoliveira/website-summit:latest
+
+      - name: Build Docker image
+        id: Build
+        run: |
+        BUILD_ID=${{ github.run_id }}
+        IMAGE_TAG="ysoliveira/website-summit:${BUILD_ID}"
+        docker build -t $IMAGE_TAG .
+        echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+      # - name: Construção da imagem Docker worker
+      #   uses: docker/build-push-action@v5.0.0
+      #   with:
+      #     context: ./src
+      #     file: ./src/Dockerfile
+      #     push: false
+      #     tags: |
+      #       ysoliveira/website-summit:${{github.run_number}}
+      #       ysoliveira/website-summit:latest
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.16.1
         with:
-          image-ref: ysoliveira/website-summit:${{github.run_number}}
+          image-ref: ysoliveira/website-summit:${{IMAGE_TAG}}
           format: "sarif"
           output: "trivy-results.sarif"
           exit-code: 0
@@ -44,7 +52,7 @@ jobs:
 
       - name: Enviando a imagem
         run: |
-          docker push ysoliveira/website-summit:${{github.run_number}}
+          docker push ysoliveira/website-summit:${{IMAGE_TAG}}
           docker push ysoliveira/website-summit:latest
   CD:
     runs-on: ubuntu-latest
