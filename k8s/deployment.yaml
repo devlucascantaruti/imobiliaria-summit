@@ -56,7 +56,7 @@ spec:
     spec:
       containers:
         - name: summit
-          image: ysoliveira/website-summit:latest
+          image: ysoliveira/website-summit:${{github.run_number}}
           ports:
             - containerPort: 8080
           env:
