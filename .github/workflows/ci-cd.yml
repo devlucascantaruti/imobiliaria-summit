@@ -27,10 +27,10 @@ jobs:
       - name: Build Docker image
         id: Build
         run: |
-        BUILD_ID=${{ github.run_id }}
-        IMAGE_TAG="ysoliveira/website-summit:${BUILD_ID}"
-        docker build -t $IMAGE_TAG .
-        echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+          BUILD_ID=${{ github.run_id }}
+          IMAGE_TAG="ysoliveira/website-summit:${BUILD_ID}"
+          docker build -t $IMAGE_TAG .
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
       # - name: Construção da imagem Docker worker
       #   uses: docker/build-push-action@v5.0.0
       #   with:
