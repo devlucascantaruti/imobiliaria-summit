@@ -16,7 +16,7 @@
 FROM nginx:alpine
 
 # Copie os arquivos HTML e CSS para o diretório padrão do nginx
-COPY /src /usr/share/nginx/html
+COPY /views /usr/share/nginx/html
 #COPY style.css /usr/share/nginx/html
 
 # Exponha a porta 80 para o tráfego HTTP
